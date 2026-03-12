@@ -44,7 +44,7 @@ The environment was built to simulate a production-grade infrastructure with tru
 ---
 
 ## 🔧 Engineering Insights & Remediation (Hardening)
-*As an engineer, identifying the flaw is only half the job. Here are the strategic fixes implemented in this lab to secure the infrastructure:*
+*Here are the strategic fixes implemented in this lab to secure the infrastructure:*
 
 ### **1. Identity & Access Management (IAM)**
 - **Disable Anonymous LDAP Binds**: Ensure `dsHeuristics` is configured to prevent unauthenticated enumeration.
