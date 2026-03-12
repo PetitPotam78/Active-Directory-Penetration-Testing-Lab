@@ -1,9 +1,9 @@
 # Active-Directory-Penetration-Testing-Lab
 
-## 🛡️ Project Overview
+## Project Overview
 This repository contains a comprehensive technical write-up of a penetration test performed on a complex, multi-domain Active Directory forest environment. The simulation follows a "Black Box" approach, starting from an unauthenticated internal position to achieving full Domain Admin privileges across three interconnected domains: `poudlard.local`, `ministere.local`, and `mangemorts.local`.
 
-## 🏗️ Lab Infrastructure & Architecture
+## Lab Infrastructure & Architecture
 The environment was built to simulate a production-grade infrastructure with trust relationships and modern services:
 - **Domains**: 3 Interconnected domains with bi-directional trusts.
 - **Operating Systems**: Windows Server 2012 R2, 2016, and Windows 10.
@@ -12,13 +12,13 @@ The environment was built to simulate a production-grade infrastructure with tru
 
 
 
-## 🛠️ Tools & Technologies Used
+## Tools & Technologies Used
 - **Reconnaissance**: `NetExec`, `Nmap`, `BloodHound/SharpHound`.
 - **Exploitation & Pivoting**: `Impacket` Suite, `Metasploit` (EternalBlue), `PetitPotam`.
 - **Credential Attacks**: `Hashcat` (Kerberoasting), `Mimikatz` (LSASS memory dump).
 - **ADCS Attacks**: `Certipy` (ESC1 & Shadow Credentials).
 
-## 🚀 The Kill Chain (Executive Summary)
+## The Kill Chain (Executive Summary)
 
 ### 1. Initial Access & Domain Compromise (`poudlard.local`)
 - **Vulnerability**: Anonymous LDAP Bind enabled and weak password policy.
@@ -43,7 +43,7 @@ The environment was built to simulate a production-grade infrastructure with tru
 
 ---
 
-## 🔧 Engineering Insights & Remediation (Hardening)
+## Engineering Insights & Remediation (Hardening)
 *Here are the strategic fixes implemented in this lab to secure the infrastructure:*
 
 ### **1. Identity & Access Management (IAM)**
@@ -66,7 +66,7 @@ The environment was built to simulate a production-grade infrastructure with tru
 
 ---
 
-## 📄 Full Report
+## Full Report
 The detailed step-by-step write-up (PDF) including terminal captures and exploit explanations is available in this repository.
 
 > **Disclaimer**: This project was conducted in a private, isolated laboratory environment for educational purposes only.
