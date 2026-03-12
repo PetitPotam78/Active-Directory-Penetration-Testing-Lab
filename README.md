@@ -34,6 +34,13 @@ The environment was built to simulate a production-grade infrastructure with tru
 - **Vulnerability**: Misconfigured Certificate Template (ESC1) allowing `EnrolleeSuppliesSubject`.
 - **Action**: Used **PetitPotam** to coerce NTLM authentication from a server, relayed it to the ADCS web enrollment portal via `ntlmrelayx`, and forged a certificate for the target user.
 
+### 4. Forest Takeover (`mangemorts.local`)
+- **Vulnerability**: Bi-directional Forest Trust and weak account isolation.
+- **Action**: 
+    - Performed **SID History** exploitation or used cross-domain credentials recovered from `srv-logs`.
+    - Executed a **DCSync** attack using `secretsdump.py` to dump the KRBTGT hash of the final domain.
+- **Persistence**: Forged a **Golden Ticket** using `ticketer.py` with the AES256 key of the KRBTGT account, granting permanent Domain Admin rights.
+
 ---
 
 ## 🔧 Engineering Insights & Remediation (Hardening)
@@ -51,6 +58,11 @@ The environment was built to simulate a production-grade infrastructure with tru
 ### **3. ADCS Hardening**
 - **Template Security**: Disabled `EnrolleeSuppliesSubject` on all certificate templates.
 - **Extended Protection for Authentication (EPA)**: Enabled EPA and required SSL for ADCS Web Enrollment to prevent NTLM relaying to HTTP.
+
+### **4. Advanced Persistence & Forest Trust Defense**
+- **Monitor Replication Requests**: Configured IDS/SIEM to alert on `DS-Replication-Get-Changes-All` events originating from non-Domain Controller IP addresses (Detection of DCSync).
+- **KRBTGT Password Rotation**: Implemented a mandatory bi-annual reset of the **KRBTGT account password** (twice to invalidate old Golden Tickets).
+- **Selective Authentication**: Hardened Forest Trusts by enabling "Selective Authentication" to limit the scope of accessible resources across domains.
 
 ---
 
